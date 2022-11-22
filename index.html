@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>What is new in ASP.NET CORE</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,900&amp;subset=latin-ext" rel="stylesheet" />
+        <!-- Shower Theme -->
+        <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x9.css" />
+        <link rel="stylesheet" href="vendors/shower-CezaryWalenciuk/styles/main.css" />
+        <!-- Prism.js -->
+        <link rel="stylesheet" href="vendors/prism/prism-my-white.css" />
+        <link rel="stylesheet" href="vendors/prism/custom-prism.css" />
+        <link rel="stylesheet" href="codegrid-white.css" />
+    
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="What is new in ASP.NET CORE">
+        <meta property="og:description" content="Presentation for 4Developers about .NET 6,C# 10, ASP.NET Core">
+        <meta property="og:url" content="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/">
+        <meta property="og:site_name" content="What is new in ASP.NET CORE">
+        <meta property="og:image" content="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/FacebookImageForMainPage.jpg"><meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta name="twitter:title" content="What is new in ASP.NET CORE">
+        <meta name="twitter:description" content="Presentation for 4Developers about .NET 6,C# 10, ASP.NET Core">
+        <meta name="twitter:image" content="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/FacebookImageForMainPage.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@walenciukc">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/icon/icon16x16.png">
+        <link rel="apple-touch-icon" href="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/icon180x180.png">
+        <link rel="shortcut icon" href="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/icon16x16.png">
+        <meta name="msapplication-square150x150logo" content="https://panniebieski.github.io/webinar_Minimum_APIs_and_why_not_controllers_in_ASP_NET_Core/forSocialMedia/icon180x180.png">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <style>
+        
+        </style>
+    </head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>What is new in ASP.NET CORE</h1>
+        <p></p>
+    </header>
+    <section class="slide front-page">
+        <div class="details">
+            <!-- 1. Avatar -->
+            <h2>Cezary Walenciuk</h2>
+            <!-- 3. Presentation title -->
+            <h2 class="bigbig"><strong style="font-size: 35px;  line-height: 1.3;">
+
+                    <span class="titlec1">What is new in ASP.NET CORE</span>
+                    <br />
+                    <span class="titlec5">24.11.2022<span>
+                    <br />
+                    <span class="titlec3"></span></strong></h2>
+            <!-- 5. Contact the speaker -->
+            <h2><a href="https://twitter.com/WalenciukC">@walenciukC</a></h2>
+        </div>
+        <div>
+            <!-- 2. Speaker -->
+        </div>
+        <div class="imag">
+            <img src="images/my-avatar.jpg" alt="Speaker">
+        </div>
+    </section>
+    <section class="slide conicG ">
+        <span class="shout colors deepbluetext" ><span>What is new in ASP.NET CORE 7<br />
+        </span></span>
+    </section>
+    <section class="slide creamR">
+        <span class="shout colors">
+            <span>
+                Containerization made easy
+        </span>
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">Open API the ability to add a description</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 32px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 32px !important;">
+                        app.MapGet(&quot;/Contracts&quot;, ContractEndPoints.GetContracts)
+                        .WithOpenApi(operation =&gt;
+                        {
+                            operation.OperationId = &quot;GetContracts&quot;;
+                            operation.Description = &quot;Gets all of the Contracts.&quot;;
+                            operation.Summary = &quot;Gets all the Contracts.&quot;;
+                            operation.Tags = new List&lt;OpenApiTag&gt;()
+                                { new OpenApiTag() { Name = &quot;Contracts&quot; } };
+                            return operation;
+                        });
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">Dedicated interface for file transfer</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        app.MapPost("/upload", async (IFormFile file) =>
+                        {
+                            using var stream = File.OpenWrite("upload.jpg");
+                            await file.CopyToAsync(stream);
+                        });
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">Grouping MapGroup and AddEndpointFilter</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        var mobileAPI = app.MapGroup("/api").AddEndpointFilter
+                                (async (context, next) =>
+                        {
+                            StringValues deviceType;
+                            context.HttpContext.Request.Headers.TryGetValue
+                                    ("x-device-type", out deviceType);
+
+                            if (deviceType != "mobile")
+                            {
+                                return Results.BadRequest();
+                            }
+                        
+                            var result = await next(context);
+                        
+                            Debug.WriteLine("after");
+                        
+                            return result;
+                        });
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">An example of me using MapGroup and AddEndpointFilter</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        mobileAPI.MapGet("/rewards", () =>
+                        {
+                            return "SecretDiscount!";
+                        });
+                        
+                        mobileAPI.MapPost("/survey", 
+                            ([AsParameters]SurveyResults results) =>
+                        {
+                            // Log to db
+                        });
+                        
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">[FromHeader]</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        // You will need to include &#39;using Microsoft.AspNetCore.Mvc;&#39;
+                        record struct ProductRequest(
+                            int CategoryId,
+                            [FromHeader(Name = &quot;PageSize&quot;)] int PageSize,
+                            [FromHeader(Name = &quot;Page&quot;)] int Page,
+                            ILogger&lt;ProductRequest&gt; Logger, 
+                            MyDb Db);
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">[FromHeader]</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        class ProductRequest
+                        {
+                            public int CategoryId { get; set; }
+
+                            [FromHeader(Name = &quot;PageSize&quot;)]
+                            public int PageSize { get; set; }
+
+                            [FromHeader(Name = &quot;Page&quot;)]
+                            public int Page { get; set; }
+
+                            public ILogger&lt;ProductRequest&gt; Logger { get; set; }
+                            public MyDb Db { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">UseRateLimiter</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        app.UseRateLimiter(new RateLimiterOptions() { RejectionStatusCode = 429 }
+                        .AddConcurrencyLimiter("Concurrency", options =>
+                        {
+                            options.PermitLimit = 1;
+                        })
+                        .AddFixedWindowLimiter("FixedWindow", options =>
+                        {
+                            options.Window = TimeSpan.FromSeconds(5);
+                            options.PermitLimit = 10;
+                            options.QueueLimit = 3;
+                            options.QueueProcessingContract = QueueProcessingContract.OldestFirst;
+                        }));
+                    
+                        app.MapGet("/unlimited", () => {
+                            return "Unlimited.";
+                        });
+                        
+                        app.MapGet("/limited", () => {
+                            return "Rate limited.";
+                        }).RequireRateLimiting("FixedWindow");
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">CacheOutput</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        app.MapGet("/menu", (IMenuService menuService) =>
+                        {
+                            return menuService.GetMenuItems();
+                        }).CacheOutput(x => x.Expire(TimeSpan.FromSeconds(10)));
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamR">
+        <span class="shout colors">
+            <span>
+            Testowanie endpointów
+        </span>
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">EndPoints</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+
+                        public class ContractEndPoints
+                        {
+                            public static IResult GetContracts(IContractservice Contractservice)
+                            {
+                                return TypedResults.Ok(Contractservice.GetContracts());
+                            }
+                    
+                            public static IResult GetContractsByIds
+                                        (IContractservice Contractservice, int[] contractIds)
+                            {
+                                return TypedResults.Ok(Contractservice.GetContracts()
+                                    .Where(x => contractIds.Contains(x.Id)));
+                            }
+                    
+                            public static IResult GetContractById
+                                        (IContractservice Contractservice, int id)
+                            {
+                                return TypedResults.Ok(Contractservice.GetContractById(id));
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">An example of using EndPoints</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        app.MapGet("/ContractById", ContractEndPoints.GetContractById);
+                        app.MapGet("/ContractsByIds", ContractEndPoints.GetContractsByIds);
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle GG">
+                <h2 class="headerCODE GG">Unit tests</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        [Fact]
+                        public void GetContractsReturnsOk()
+                        {
+                            // Simple test
+                            var result = ContractEndPoints.GetContracts(Contractservice.Object);
+                            Assert.IsType&lt;Ok&lt;List&lt;Contract&gt;&gt;&gt;(result);
+                        }
+                
+                        [Fact]
+                        public void GetContractByIdReturnsOk()
+                        {
+                            // Another testing variation
+                            var result = (Ok&lt;Contract&gt;)
+                                ContractEndPoints.GetContractById(Contractservice.Object, 3);
+
+                            Assert.Equal(200, result.StatusCode);
+                            Assert.IsAssignableFrom&lt;Contract&gt;(result.Value);
+                        }
+                    </code>
+                </pre>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/1.gif" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide conicG ">
+        <span class="shout colors deepbluetext" ><span>What is new in Blazor<br />
+        </span></span>
+    </section>
+    <section class="slide creamR  compact">
+        <h2>Blazor</h2>
+        <ol class="nonumbers">
+            <li class="next">Blazor two empty templates</li>
+            <li class="next">New event binding for example with input</li>
+            <li class="next">NavigationLock</li>
+            <li class="next">QuickGrid</li>
+        </ol>
+    </section>
+    <section class="slide creamR   compact">
+        <h2>Blazor</h2>
+        <ol class="nonumbers">
+            <li class="next">.NET MAUI Blazor template</li>
+            <ol class="nonumbers">
+            <li class="next">BlazorWebView control in MAUI</li>
+            </ol>
+        </ol>
+    </section>
+
+    <!-- <div class="progress"></div> -->
+    <footer class="badge badge-top-left">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+
+</body>
+
+</html>
